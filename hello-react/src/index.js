@@ -9,4 +9,4 @@ import './global.css';
 
 const container = document.getElementById('app');
 
-ReactDOM.render(<Badge />, container);
+ReactDOM.render(<Badge firstName="Andrese" lastName="Betancourte" jobTitle="Frontend deve" twitter="andresebbe" avatar="https://s.gravatar.com/avatar/484479aae5659fd266b2864a69b7c7cd?s=80" />, container);
