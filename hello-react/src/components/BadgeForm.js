@@ -11,11 +11,21 @@ class BadgeForm extends React.Component {
         });
     }
 
-    /* Si el boton esta type submit la pagina se recarga,
+    /* Si el boton esta type submit (Que lo esta por defecto) la pagina se recarga,
     Si no queremos que eso pase le ponemos type button
     */
     handleClick = e => {
         console.log('Button was clicked');
+    }
+
+
+    /*Asi no se recarga la pagina al hacer click en el boton parte2
+        (El boton tiene que estar en type submit)
+    */ 
+    handleSubmit = e => {
+        /* Asi evitamos que se envie el formulario*/
+        e.preventDefault();
+        console.log("Form was submmitted");
     }
 
     render(){
@@ -23,12 +33,12 @@ class BadgeForm extends React.Component {
 
             <div>
                 <h1>New Attendant</h1>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>First Name</label>
                         <input onChange={this.handleChange}className="form-control" type="text" name="firstName"></input>
                     </div>
-                    <button type="button" onClick={this.handleClick} className="btn btn-primary">Save</button>
+                    <button onClick={this.handleClick} className="btn btn-primary">Save</button>
                 </form>
             </div>
 
