@@ -2,30 +2,36 @@ import React from 'react';
 
 class BadgeForm extends React.Component {
 
-    /* Asi se maneja el evento de input en react */
-    handleChange = e => {
-        /* Asi vemos que se va escribiendo en el input */
-        console.log({ 
-            name: e.target.name,
-            value: e.target.value,
-        });
+    /* Cuando le agregamos el value al input hay que inicializar el state */
+    state = {
+        //Si quiere que el input ya sale con algo escrito
+        jobTitle: 'Developer'
     }
 
-    /* Si el boton esta type submit (Que lo esta por defecto) la pagina se recarga,
-    Si no queremos que eso pase le ponemos type button
-    */
+    handleChange = e => {
+
+        /* console.log({ 
+            name: e.target.name,
+            value: e.target.value,
+        }); */
+
+
+        /* setState es el lugar donde se va a guardar la informacion. */
+        this.setState({
+            //Asi guarda en el name del input, el valor que se le escriba.
+            [e.target.name]: e.target.value,
+        })
+    }
+
     handleClick = e => {
         console.log('Button was clicked');
     }
 
-
-    /*Asi no se recarga la pagina al hacer click en el boton parte2
-        (El boton tiene que estar en type submit)
-    */ 
     handleSubmit = e => {
-        /* Asi evitamos que se envie el formulario*/
+        
         e.preventDefault();
         console.log("Form was submmitted");
+        console.log(this.state)
     }
 
     render(){
@@ -36,7 +42,34 @@ class BadgeForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>First Name</label>
-                        <input onChange={this.handleChange}className="form-control" type="text" name="firstName"></input>
+                        {/* 
+                        Esta informacion se esta guardando en dos sitios, cada input guarda su propio valor, 
+                        y ademas le esta diciendo al setState guarda este valor. No queremos eso. 
+                        
+                        Para eso tenemos que cambiar nuestros inputs de no controlados a controlados. Agregando el props de value
+                        
+                         */}
+                        <input onChange={this.handleChange} className="form-control" type="text" name="firstName" value={this.state.firstName}></input>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Last Name</label>
+                        <input onChange={this.handleChange} className="form-control" type="text" name="lastName" value={this.state.lastName}></input>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input onChange={this.handleChange} className="form-control" type="email" name="email" value={this.state.email}></input>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Job Title</label>
+                        <input onChange={this.handleChange}className="form-control" type="text" name="jobTitle" value={this.state.jobTitle}></input>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Twitter</label>
+                        <input onChange={this.handleChange}className="form-control" type="text" name="twitter" value={this.state.twitter}></input>
                     </div>
                     <button onClick={this.handleClick} className="btn btn-primary">Save</button>
                 </form>
