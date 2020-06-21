@@ -11,6 +11,26 @@ import BadgeForm from '../components/BadgeForm';
 
 
 class BadgeNew extends React.Component {
+
+    /* Asi nos tramos lo que pongamos en el badgeForm hacia aca */
+    state ={ form: {
+        /* Inciializamos para que no salga el error de los input en consola */
+        firstName: '',
+        lastName: '',
+        email: '',
+        jobTitle: '',
+        twitter: '',
+    } };
+
+    handleChange = e => {
+        this.setState({
+            form: {
+                ...this.state.form,
+                [e.target.name]: e.target.value,
+                },
+            });
+        };
+
     render() {
         return(
             <div>
@@ -24,11 +44,11 @@ class BadgeNew extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-6">
-                            <Badge firstName="Andres" lastName="Betancourt" jobTitle="Frontend Dev" twitter="andresebb" avatar="https://s.gravatar.com/avatar/484479aae5659fd266b2864a69b7c7cd?s=80"/>
+                            <Badge firstName={this.state.form.firstName} lastName={this.state.form.lastName} jobTitle={this.state.form.jobTitle} twitter={this.state.form.twitter} avatar="https://s.gravatar.com/avatar/484479aae5659fd266b2864a69b7c7cd?s=80"/>
                         </div>
 
                         <div className="col-6">
-                            <BadgeForm/>
+                            <BadgeForm onChange={this.handleChange} formValues={this.state.form} />
                         </div>
                     </div>
                 </div>
