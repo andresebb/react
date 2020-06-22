@@ -2,26 +2,6 @@ import React from 'react';
 
 class BadgeForm extends React.Component {
 
-    /* Haremos que pase lo que se llene aqui en badgeform a  badge*/
-    /* Cambiamos el valor de onchange de los inputs 
-
-
-    Movimos el estado de aca de badgeform al badNew, que ahora le compart
-    esa informacion al badge y al formulario.
-
-    
-    /* 
-
-
-    Este ya no se usare, porque lo acomodamos en badgenew
-    
-    handleChange = e => {
-
-        this.setState({
-            [e.target.name]: e.target.value,
-        })
-    } */
-
     handleClick = e => {
         console.log('Button was clicked');
     }

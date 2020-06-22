@@ -2,8 +2,6 @@ import React from 'react';
 
 import './styles/BadgeList.css'
 
-import avatar from '../images/logo.svg'
-
 import twitterLogo from '../images/twitterLogo.svg'
 
 class BadgesList extends React.Component{
@@ -17,7 +15,7 @@ class BadgesList extends React.Component{
                         return(
                             <li key={badge.id}>
                                 <div className="image">
-                                    <img className="" src={badge.avatarUrl}></img>
+                                    <img className="" src={badge.avatarUrl} alt="mierda"></img>
                                 </div>
 
                                 <div className="about">
@@ -29,7 +27,7 @@ class BadgesList extends React.Component{
                                     </div>
                                     <div className="about__twitter">
                                         <div className="twitter__logo">
-                                        <img src={twitterLogo}></img>
+                                        <img src={twitterLogo} alt="mierdsa2"></img>
                                         </div>
                                         <p>@{badge.twitter}</p>
                                     </div>
