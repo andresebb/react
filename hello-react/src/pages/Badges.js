@@ -7,86 +7,40 @@ import confLogo from "../images/badge-header.svg";
 
 import BadgesList from "../components/BadgesList";
 
+import api from "../api";
+
 class Badges extends React.Component {
-  /* Introduccion del ciclo de vida de un comopnente */
+  state = {
+    loading: true,
+    error: null,
+    data: undefined,
+  };
 
-  /* Aca en constructor tenemos que inicializar la super clase
-  que en este caso es component, por eso se le cola propss
-  */
-  constructor(props) {
-    super(props);
-    console.log("1. constructor()");
-    /* Aqui en constructor es donde se incializa el state 
-    por defecto lo incializaremos vacio, para asi llamarlos 
-    en didmount
-    */
-
-    this.state = {
-      data: [],
-    };
-  }
-
+  /* El mejor lugar par llamar a una api es aca, en el componentDidMount */
   componentDidMount() {
-    console.log("3.componentDidMount()");
-
-    /* Simularemos una peticion a un api */
-
-    this.timeoutId = setTimeout(() => {
-      this.setState({
-        data: [
-          {
-            id: "2de30c42-9deb-40fc-a41f-05e62b5939a7",
-            firstName: "Freda",
-            lastName: "Grady",
-            email: "Leann_Berge@gmail.com",
-            jobTitle: "Legacy Brand Director",
-            twitter: "FredaGrady22221-7573",
-            avatarUrl:
-              "https://www.gravatar.com/avatar/f63a9c45aca0e7e7de0782a6b1dff40b?d=identicon",
-          },
-          {
-            id: "d00d3614-101a-44ca-b6c2-0be075aeed3d",
-            firstName: "Major",
-            lastName: "Rodriguez",
-            email: "Ilene66@hotmail.com",
-            jobTitle: "Human Research Architect",
-            twitter: "MajorRodriguez61545",
-            avatarUrl:
-              "https://www.gravatar.com/avatar/d57a8be8cb9219609905da25d5f3e50a?d=identicon",
-          },
-          {
-            id: "63c03386-33a2-4512-9ac1-354ad7bec5e9",
-            firstName: "Daphney",
-            lastName: "Torphy",
-            email: "Ron61@hotmail.com",
-            jobTitle: "National Markets Officer",
-            twitter: "DaphneyTorphy96105",
-            avatarUrl:
-              "https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon",
-          },
-        ],
-      });
-    }, 3000);
+    this.fetchData();
   }
 
-  /* 
-  CompodidUpdate sucede despues de ejecutarse el render
+  fetchData = async () => {
+    /* cuando se incia la peticion pasa esto */
+    this.setState({ loading: true, error: null });
 
-  Recibe dos argumentos
-  los pros que teniamos antos y el state que teniamos antes*/
-  componentDidUpdate(prevProps, prevState) {
-    console.log("5. componentDidUpdate()");
-  }
-
-  /* Sucede antes de que se vaya el componente del dom */
-  componentWillUnmount() {
-    console.log("6. componentWillUnmount");
-
-    //Se hace para que no salga error en consola,
-    clearTimeout(this.timeoutId);
-  }
+    /* Si la api nos trae los datos, loading pasa a false
+    y metemos esos datos en data */
+    try {
+      //Vease api.js
+      const data = await api.badges.list();
+      this.setState({ loading: false, data: data });
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
+  };
 
   render() {
+    if (this.state.loading === true) {
+      return "Loading...";
+    }
+
     console.log("2/4. render()");
     return (
       <React.Fragment>

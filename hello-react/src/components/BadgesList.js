@@ -1,45 +1,59 @@
-import React from 'react';
+import React from "react";
 
-import './styles/BadgeList.css'
+import { Link } from "react-router-dom";
 
-import twitterLogo from '../images/twitterLogo.svg'
+import "./styles/BadgeList.css";
 
-class BadgesList extends React.Component{
-    render(){
-        return(
-            <div className="BadgesList">
-                <ul className="list-unstyled">
-                    {/* vamos a mapear cada uno de los objetos que estan en state (en badges.js)y los
-                    metemos dentro de la variable badge */}
-                    {this.props.badges.map((badge) => {
-                        return(
-                            <li key={badge.id}>
-                                <div className="image">
-                                    <img className="" src={badge.avatarUrl} alt="mierda"></img>
-                                </div>
+import twitterLogo from "../images/twitterLogo.svg";
 
-                                <div className="about">
-                                    <div className="about__name">
-                                        <p>{badge.firstName} {badge.lastName}</p>
-                                    </div>
-                                    <div className="about__job">
-                                        <p>{badge.jobTitle}</p>
-                                    </div>
-                                    <div className="about__twitter">
-                                        <div className="twitter__logo">
-                                        <img src={twitterLogo} alt="mierdsa2"></img>
-                                        </div>
-                                        <p>@{badge.twitter}</p>
-                                    </div>
-                                </div>
-
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-        );
+class BadgesList extends React.Component {
+  render() {
+    if (this.props.badges.length === 0) {
+      return (
+        <div>
+          <h3>No badges were found</h3>
+          <Link className="btn btn-primary" to="/badges/new">
+            Create new badge
+          </Link>
+        </div>
+      );
     }
+
+    return (
+      <div className="BadgesList">
+        <ul className="list-unstyled">
+          {/* vamos a mapear cada uno de los objetos que estan en state (en badges.js)y los
+                    metemos dentro de la variable badge */}
+          {this.props.badges.map((badge) => {
+            return (
+              <li key={badge.id}>
+                <div className="image">
+                  <img className="" src={badge.avatarUrl} alt="mierda"></img>
+                </div>
+
+                <div className="about">
+                  <div className="about__name">
+                    <p>
+                      {badge.firstName} {badge.lastName}
+                    </p>
+                  </div>
+                  <div className="about__job">
+                    <p>{badge.jobTitle}</p>
+                  </div>
+                  <div className="about__twitter">
+                    <div className="twitter__logo">
+                      <img src={twitterLogo} alt="mierdsa2"></img>
+                    </div>
+                    <p>@{badge.twitter}</p>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default BadgesList;
