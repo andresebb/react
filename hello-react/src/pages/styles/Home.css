@@ -1,0 +1,39 @@
+.home {
+  background: url("../../images/stars.svg"), #1b1b25;
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.home__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.boton {
+  background: #76a700;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: inset 0 -0.4em rgba(0, 0, 0, 0.2);
+  transition: 2s;
+}
+
+.boton:hover {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
