@@ -11,7 +11,7 @@
     },
     {
       "id": "d00d3614-101a-44ca-b6c2-0be075aeed3d",
-      "firstName": "Major",
+      "firstName": "Majoritario",
       "lastName": "Rodriguez",
       "email": "Ilene66@hotmail.com",
       "jobTitle": "Human Research Architect",
@@ -568,6 +568,14 @@
       "jobTitle": "",
       "twitter": "",
       "id": "PM9fpuk"
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "jobTitle": "",
+      "twitter": "",
+      "id": "ygR8dTK"
     }
   ]
 }

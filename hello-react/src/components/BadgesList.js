@@ -45,7 +45,13 @@ class BadgesList extends React.Component {
           {this.props.badges.map((badge) => {
             return (
               <li key={badge.id}>
-                <BadgesListItem badge={badge} />
+                {/* Aca hacemos que al hacer click en algun badge lo vayamos a editar. */}
+                <Link
+                  className="text-reset text-decoration-none"
+                  to={`/badges/${badge.id}/edit`}
+                >
+                  <BadgesListItem badge={badge} />
+                </Link>
               </li>
             );
           })}
