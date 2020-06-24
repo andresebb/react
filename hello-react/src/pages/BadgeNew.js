@@ -37,6 +37,7 @@ class BadgeNew extends React.Component {
       await api.badges.create(this.state.form);
       this.setState({ loading: false });
 
+      /* Cuando creemos el new badge nos enviara a la pagina de badges */
       this.props.history.push("/badges");
     } catch (error) {
       this.setState({ loading: false, error: error });
