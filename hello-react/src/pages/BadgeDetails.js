@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 import Badge from "../components/Badge";
 
@@ -49,6 +50,13 @@ function BadgeDetails(props) {
 
               <div>
                 <button className="btn btn-danger">Delete</button>
+                {/* Portal el cual aparecera el modal 
+                el portal recibe el que y en donde, asi como 
+                ReactDOM.render*/}
+                {ReactDOM.createPortal(
+                  <h1>Hola, realmente no estoy aquí</h1>,
+                  document.getElementById("modal")
+                )}
               </div>
             </div>
           </div>
