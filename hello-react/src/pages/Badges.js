@@ -14,9 +14,18 @@ class Badges extends React.Component {
     error: null,
     data: undefined,
   };
-
   componentDidMount() {
     this.fetchData();
+
+    /* Aplicaremos el polling, esto srive para que cada cierto 
+    determinado se vaya al servidor a pedir datos y se 
+    actualice auto maticamente*/
+    this.intervalId = setInterval(this.fetchData, 5000);
+  }
+
+  componentWillUnmount() {
+    /* Sirve para cancelar el poolling al pasar de pagina */
+    clearInterval(this.intervalId);
   }
 
   fetchData = async () => {
@@ -31,7 +40,9 @@ class Badges extends React.Component {
   };
 
   render() {
-    if (this.state.loading === true) {
+    /* This.state.error es del polling para que no se muestre
+    el loading cuando se ejecute el polling */
+    if (this.state.loading === true && !this.state.data) {
       return <PageLoading />;
     }
 
@@ -61,6 +72,11 @@ class Badges extends React.Component {
           </div>
 
           <BadgesList badges={this.state.data} />
+
+          {/* Esto es del polling
+          si eso es true entoces ensena el loading
+           */}
+          {this.state.loading && "Loading..."}
         </div>
       </React.Fragment>
     );
