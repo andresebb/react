@@ -19,19 +19,14 @@ class Badges extends React.Component {
     data: undefined,
   };
 
-  /* El mejor lugar par llamar a una api es aca, en el componentDidMount */
   componentDidMount() {
     this.fetchData();
   }
 
   fetchData = async () => {
-    /* cuando se incia la peticion pasa esto */
     this.setState({ loading: true, error: null });
 
-    /* Si la api nos trae los datos, loading pasa a false
-    y metemos esos datos en data */
     try {
-      //Vease api.js
       const data = await api.badges.list();
       this.setState({ loading: false, data: data });
     } catch (error) {
