@@ -1,0 +1,46 @@
+ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: center;
+}
+
+li {
+  margin-bottom: 1rem;
+  border-top: 4px solid teal;
+  border-radius: 12px;
+  background: rgb(2, 25, 51);
+  width: 400px;
+  color: white;
+}
+
+.image img {
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.twitter__logo img {
+  height: 50px;
+  width: 50px;
+}
+
+.about__twitter p {
+  color: rgb(121, 115, 115);
+}
+
+.BadgesListItem {
+  background: teal;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+  display: flex;
+  padding: 1rem;
+}
+
+.BadgesListItem__avatar {
+  border-radius: 50%;
+  background: #a3a3a3;
+  margin-right: 0.5rem;
+  width: 80px;
+  height: 80px;
+}
